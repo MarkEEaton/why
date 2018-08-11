@@ -3,7 +3,10 @@ import nltk
 nltk.download('punkt')
 
 def main():
-    """ make the because file """
+    """
+    make the because file
+    why.txt is a giant file of concatenated books
+    """
     with open('why.txt', 'r', encoding='latin-1') as whyfile:
         why = whyfile.read()
 
@@ -15,7 +18,7 @@ def main():
     tok = nltk.sent_tokenize(string_why)
     for sentence in tok:
         # remove series of multiple spaces
-        sentence = ' '.join(sentence.split())        
+        sentence = ' '.join(sentence.split())
         # split on 'because'
         spl = sentence.split('because')
         try:
