@@ -16,7 +16,7 @@ pyparsing==2.2.0
 python-dateutil==2.7.3
 pytz==2018.5
 PyYAML==5.4.1
-requests==2.24.0
+requests==2.25.1
 safety==1.8.7
 six==1.11.0
 urllib3==1.26.5
