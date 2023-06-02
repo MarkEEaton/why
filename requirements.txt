@@ -5,7 +5,7 @@ cffi==1.14.4
 chardet==3.0.4
 charset-normalizer==3.1.0
 click==8.1.2
-cryptography==39.0.2
+cryptography==41.0.1
 decorator==4.3.0
 dparse==0.5.2
 http-ece==1.0.5
