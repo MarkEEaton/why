@@ -9,7 +9,7 @@ cryptography==42.0.5
 decorator==4.3.0
 dparse==0.5.2
 http-ece==1.0.5
-idna==2.7
+idna==3.7
 Mastodon.py==1.8.1
 packaging==17.1
 pycparser==2.18
