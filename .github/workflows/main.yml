@@ -1,4 +1,7 @@
 steps:
+  - name: Enable debug logging
+    env:
+      ACTIONS_STEP_DEBUG: true
 - uses: actions/checkout@v4
 - uses: actions/setup-python@v5
   with:
