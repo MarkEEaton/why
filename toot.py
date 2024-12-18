@@ -1,9 +1,12 @@
+import os
 import random
 from mastodon import Mastodon
 
+sec = os.environ['WHY_USERCRED_SECRET']
+
 # Create actual API instance
 mastodon = Mastodon(
-    access_token = 'why_usercred.secret',
+    access_token = sec,
     api_base_url = 'https://mastodon.ocert.at'
 )
 
