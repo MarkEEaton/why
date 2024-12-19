@@ -1,4 +1,7 @@
-on: workflow_dispatch
+on:
+  schedule:
+  - cron: '0 8 * * *'
+  - cron: '0 16 * * *'
 
 jobs:
   deploy:
@@ -13,9 +16,6 @@ jobs:
     - name: 'run the python script'
       run: |
         pip install -r requirements.txt
-        # Clean the secret before exporting it
-        clean_secret=$(echo "$WHY_USERCRED_SECRET" | tr -d '[:space:]')
-        export WHY_USERCRED_SECRET="$clean_secret"
         python toot.py
       env:
         WHY_EMAIL: ${{ secrets.WHY_EMAIL }}
