@@ -2,13 +2,19 @@ import os
 import random
 from mastodon import Mastodon
 
-sec = os.environ['WHY_USERCRED_SECRET']
-
-# Create actual API instance
-mastodon = Mastodon(
-    access_token = sec,
-    api_base_url = 'https://mastodon.ocert.at'
+app = Mastodon.create_app(
+    'pytooterapp',
+    api_base_url = 'https://mastodon.ocert.at',
 )
+
+mastodon = Mastodon(client_id = app[0],)
+token = mastodon.log_in(
+    os.environ['WHY_EMAIL'],
+    os.environ['WHY_PWD'],
+)
+
+mastodon = Mastodon(access_token = token)
+
 
 with open('output.txt', 'r') as infile:
     toots = infile.readlines()
