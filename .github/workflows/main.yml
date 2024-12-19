@@ -13,6 +13,9 @@ jobs:
     - name: 'run the python script'
       run: |
         pip install -r requirements.txt
+        # Clean the secret before exporting it
+        clean_secret=$(echo "$WHY_USERCRED_SECRET" | tr -d '[:space:]')
+        export WHY_USERCRED_SECRET="$clean_secret"
         python toot.py
       env:
         WHY_USERCRED_SECRET: ${{ secrets.WHY_USERCRED_SECRET }}
