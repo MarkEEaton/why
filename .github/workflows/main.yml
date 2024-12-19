@@ -18,4 +18,5 @@ jobs:
         export WHY_USERCRED_SECRET="$clean_secret"
         python toot.py
       env:
-        WHY_USERCRED_SECRET: ${{ secrets.WHY_USERCRED_SECRET }}
+        WHY_EMAIL: ${{ secrets.WHY_EMAIL }}
+        WHY_PWD: ${{ secrets.WHY_PWD }}
