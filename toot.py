@@ -7,7 +7,7 @@ app = Mastodon.create_app(
     api_base_url = 'https://mastodon.ocert.at',
 )
 
-mastodon = Mastodon(client_id = app[0],)
+mastodon = Mastodon(client_id = app)
 token = mastodon.log_in(
     os.environ['WHY_EMAIL'],
     os.environ['WHY_PWD'],
