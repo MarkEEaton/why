@@ -9,7 +9,8 @@ jobs:
       with:
         python-version: '3.10'
         cache: 'pip' # caching pip dependencies
-        WHY_USERCRED_SECRET: ${{ secrets.WHY_USERCRED_SECRET }}
+        env:
+          WHY_USERCRED_SECRET: ${{ secrets.WHY_USERCRED_SECRET }}
     - run: |
         pip install -r requirements.txt
         python toot.py
