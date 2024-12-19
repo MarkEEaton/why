@@ -1,0 +1,22 @@
+on: workflow_dispatch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: defaultenv
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+        cache: 'pip' # caching pip dependencies
+    - name: 'run the python script'
+      run: |
+        pip install -r requirements.txt
+        # Clean the secret before exporting it
+        clean_secret=$(echo "$WHY_USERCRED_SECRET" | tr -d '[:space:]')
+        export WHY_USERCRED_SECRET="$clean_secret"
+        python toot.py
+      env:
+        WHY_EMAIL: ${{ secrets.WHY_EMAIL }}
+        WHY_PWD: ${{ secrets.WHY_PWD }}
