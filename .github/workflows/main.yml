@@ -20,5 +20,4 @@ jobs:
         pip install -r requirements.txt
         python toot.py
       env:
-        WHY_EMAIL: ${{ secrets.WHY_EMAIL }}
-        WHY_PWD: ${{ secrets.WHY_PWD }}
+        PYTOOTERUSERCREDSECRET: ${{ secrets.PYTOOTERUSERCREDSECRET }}
