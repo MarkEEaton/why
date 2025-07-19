@@ -3,7 +3,7 @@ import random
 from mastodon import Mastodon
 
 
-mastodon = Mastodon(access_token = os.environ['PYTOOTERUSERCREDSECRET'])
+mastodon = Mastodon(access_token = os.environ['PYTOOTERUSERCREDSECRET'], api_base_url = 'https://mastodon.ocert.at')
 
 with open('output.txt', 'r') as infile:
     toots = infile.readlines()
