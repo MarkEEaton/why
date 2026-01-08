@@ -21,4 +21,4 @@ PyYAML==6.0.2
 requests==2.32.4
 six==1.11.0
 toml==0.10.2
-urllib3==2.6.0
+urllib3==2.6.3
