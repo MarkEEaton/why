@@ -28,16 +28,24 @@ def tooter():
             api_base_url='https://mastodon.ocert.at'
         )
         
-        # Pick random toot and post it
-        random_toot = random.randrange(0, len(toots))
-        toot = toots[random_toot]
+        max_attempts = 10  # Maximum number of retries
+        attempts = 0
         
-        if len(toot) <= 500:
-            print(f"Posting: {toot}")
-            mastodon.toot(toot)
-            print("Toot posted successfully!")
-        else:
-            print(f"Skipping too long toot (length: {len(toot)}): {toot[:100]}...")
+        while attempts < max_attempts:
+            # Pick random toot
+            random_toot = random.randrange(0, len(toots))
+            toot = toots[random_toot]
+            
+            if len(toot) <= 500:
+                print(f"Posting: {toot}")
+                mastodon.toot(toot)
+                print("Toot posted successfully!")
+                return
+            else:
+                print(f"Skipping too long toot (length: {len(toot)}): {toot[:100]}...")
+                attempts += 1
+        
+        print(f"Failed to find a suitable toot after {max_attempts} attempts")
             
     except FileNotFoundError:
         print("Error: output.txt file not found")
