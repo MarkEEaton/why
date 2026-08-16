@@ -12,7 +12,7 @@ def tooter():
         # Handle empty file
         if not toots:
             print("No toots found in output.txt")
-            return
+            raise Exception("No toots found in output.txt")
         
         # Remove empty lines and strip whitespace
         toots = [t.strip() for t in toots if t.strip()]
@@ -20,7 +20,7 @@ def tooter():
         # Handle case where all lines are empty
         if not toots:
             print("No valid toots found in output.txt")
-            return
+            raise Exception("No valid toots found in output.txt")
             
         # Connect to Mastodon
         mastodon = Mastodon(
@@ -46,13 +46,17 @@ def tooter():
                 attempts += 1
         
         print(f"Failed to find a suitable toot after {max_attempts} attempts")
+        raise Exception(f"Failed to find a suitable toot after {max_attempts} attempts")
             
     except FileNotFoundError:
         print("Error: output.txt file not found")
+        raise Exception("output.txt file not found")
     except KeyError:
         print("Error: PYTOOTERUSERCREDSECRET environment variable not set")
+        raise Exception("PYTOOTERUSERCREDSECRET environment variable not set")
     except Exception as e:
         print(f"Error posting toot: {e}")
+        raise  # Re-raise the exception to ensure GitHub Actions detects it
 
 
 if __name__ == '__main__':
